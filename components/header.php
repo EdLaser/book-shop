@@ -2,7 +2,7 @@
     <ul class="nav nav-pills">
         <li>
             <h1>
-                Buchgeschäfft der Gruppe MR
+                <a href='index.php'>Buchgeschäfft der Gruppe G04</a>
             </h1>
         </li>
     </ul>
