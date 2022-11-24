@@ -72,19 +72,7 @@
                 // host, user, password, database
                 $db_con = new mysqli("localhost", "g04", "ed67ford", "g04")
                     or die("Keine Verbindung zur Datenbank moeglich: ");
-                echo '<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
-                    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-                    <div class="toast-header">
-                        <strong class="me-auto">Datenbank</strong>
-                        <small>1 second ago.</small>
-                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                    </div>
-                    <div class="toast-body">
-                        Verbindung erfolgreich
-                    </div>
-                    </div>
-                </div>
-                ';
+
                 $query = "Select * FROM buecher;";
                 $result = $db_con->query($query) or die("Anfrage fehlgeschlagen");
                 if ($result->num_rows > 0) {
@@ -94,10 +82,12 @@
                     echo "\t\t<th scope='col'>Autorenname</th>\n";
                     echo "\t</thead>\n";
                     while ($line = $result->fetch_assoc()) {
-                        echo "\t<a href='detail.php?detailID=" . $line['ID'] > "<tr>\n";
-                        echo "\t\t<td>" . $line['Produkttitel'] . "</td>\n";
+                        echo "\t<tbody>\n";
+                        echo "\t<tr>\n";
+                        echo "\t\t<td>" . "<a href='detail.php?detailID=" . $line['ID'] . "'>" . $line['Produkttitel'] . "</a></td>\n";
                         echo "\t\t<td>" . $line['Autorenname'] . "</td>\n";
-                        echo "\t</tr></a>\n";
+                        echo "\t</tr>\n";
+                        echo "\t</tbody>\n";
                     }
                     echo "</table>\n";
                 }
