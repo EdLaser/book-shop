@@ -92,7 +92,7 @@
                     echo "<table class='table table-dark table-striped'>\n";
                     echo "\t<thead class='table-dark'>\n";
                     echo "\t\t<th scope='col'>Produkttitel</th>\n";
-                    echo "\t\t<th scope='col>Autorenname</th>\n";
+                    echo "\t\t<th scope='col'>Autorenname</th>\n";
                     echo "\t</thead>\n";
                     while ($line = $result->fetch_assoc()) {
                         echo "\t<a href='detail.php?detailID=" . $line['ID'] > "<tr>\n";
