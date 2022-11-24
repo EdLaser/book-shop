@@ -9,7 +9,7 @@
     if($result -> num_rows > 0) {
         echo "<table>\n";
         while($line = $result->fetch_assoc()) {
-            echo "\t<a href='katalog.php?detailID=" . $line['ID']> "<tr>\n";
+            echo "\t<a href='detail.php?detailID=" . $line['ID']> "<tr>\n";
             echo "\t\t<td>" . $line['Produkttitel'] . "</td>\n";
             echo "\t\t<td>" . $line['Autorenname'] . "</td>\n";
             echo "\t</tr></a>\n";
