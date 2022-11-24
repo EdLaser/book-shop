@@ -19,35 +19,60 @@
 
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
-                        echo "<h5>Buchtitel</h5>";
-                        echo "<span>". $row['Produkttitel'] . "</span>";
+                        echo "\t<table class='table table-dark table-borderless'>\n";
+                        echo "\t\t<thead><tr><th>Details zum Buch</th></tr></thead>\n";
                         
-                        echo "<h5>Buchcode</h5>";
-                        echo "<span>". $row['Produktcode'] . "</span>";
+                        echo "\t\t\t<tr>\n";
+                        echo "\t\t\t<td><strong>Buchtitel</strong></td>\n";
+                        echo "\t\t\t<td>" . $row['Produkttitel'] . "</td>\n";
+                        echo "\t\t</tr>";
 
-                        echo "<h5>Autorenname</h5>";
-                        echo "<span>". $row['Autorenname'] . "</span>";
+                        echo "<tr>\n";
+                        echo "<td><strong>Buchcode</strong></td>\n";
+                        echo "<td>" . $row['Produktcode'] . "</td>\n";
+                        echo "</tr>\n";
 
-                        echo "<h5>Verlagsname</h5>";
-                        echo "<span>". $row['Verlagsname'] . "</span>";
+                        echo "<tr>\n";
+                        echo "<td><strong>Autorenname</strong></td>\n";
+                        echo "<td>" . $row['Autorenname'] . "</td>\n";
+                        echo "</tr>\n";
 
-                        echo "<h5>Preis (netto)</h5>";
-                        echo "<span>". $row['PreisNetto'] . "</span>";
+                        echo "<tr>";
+                        echo "<td><strong>Verlagsname</strong></td>\n";
+                        echo "<td>" . $row['Verlagsname'] . "</td>\n";
+                        echo "</tr>";
 
-                        echo "<h5>Preis (brutto)</h5>";
-                        echo "<span>". $row['PreisBrutto'] . "</span>";
+                        echo "<tr>";
+                        echo "<td><strong>Preis (netto)</strong></td>";
+                        echo "<td>" . $row['PreisNetto'] . "</td>";
+                        echo "</tr>";
 
-                        echo "<h5>Mehrwertsteuer</h5>";
-                        echo "<span>". $row['Mwstsatz'] . "%</span>";
+                        echo "<tr>\n";
+                        echo "<td><strong>Preis (brutto)</strong></td>\n";
+                        echo "<td>" . $row['PreisBrutto'] . "</td>\n";
+                        echo "</tr>\n";
 
-                        echo "<h5>Kurzinhalt</h5>";
-                        echo "<span>". $row['Kurzinhalt'] . "</span>";
+                        echo "<tr>\n";
+                        echo "<td><strong>Mehrwertsteuer</strong></td>\n";
+                        echo "<td>" . $row['Mwstsatz'] . "</td>\n";
+                        echo "</tr>\n";
 
-                        echo "<h5>Lagerbestand</h5>";
-                        echo "<span>". $row['Lagerbestand'] . "</span>";
+                        echo "<tr>\n";
+                        echo "<td><strong>Kurzinhalt</strong></td>\n";
+                        echo "<td>" . $row['Kurzinhalt'] . "</td>\n";
+                        echo "</tr>\n";
 
-                        echo "<h5>Gewicht</h5>";
-                        echo "<span>". $row['Gewicht'] . "</span>";
+                        echo "<tr>\n";
+                        echo "<td><strong>Lagerbestand</strong></td>\n";
+                        echo "<td>\n" . $row['Lagerbestand'] . "</td>\n";
+                        echo "</tr>\n";
+
+                        echo "<tr>\n";
+                        echo "<td><strong>Gewicht</strong></td>\n";
+                        echo "<td>\n" . $row['Gewicht'] . "</td>\n";
+                        echo "</tr>\n";
+
+                        echo "</table>";
                     }
                 }
                 ?>
