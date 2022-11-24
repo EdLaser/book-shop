@@ -20,58 +20,59 @@
             </li>
         </ul>
     </header>
-    <div class="d-flex flex-row">
-        <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark fixed-right" style="width: 22.5%;">
-            <span class="fs-4">
-                Sidebar
-            </span>
-            <hr>
-            <ul class="nav nav-pills flex-column mb-auto">
-                <li class="nav-item">
-                    <a href="#" class="nav-link text-white">
-                        EwA Gruppe G04
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <div class="accordion" id="bookShopNavList">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="bookShopHeader">
-                                <button class="accordion-button collapsed text-white bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#linkList" aria-expanded="false" aria-controls="linkList">
-                                    Buchshop
-                                </button>
-                            </h2>
-                        </div>
-                        <div id="linkList" class="accordion-collapse collapse" aria-labelledby="bookShopHeader" data-bs-parent="#bookShopNavList">
-                            <div class="accordion-body">
-                                <ul class="list-group">
-                                    <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
-                                        First item
-                                    </a>
-                                    <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
-                                        Second item
-                                    </a>
-                                    <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
-                                        Third item
-                                    </a>
-                                </ul>
+    <main class="bg-dark">
+        <div class="d-flex flex-row">
+            <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark fixed-right" style="width: 22.5%;">
+                <span class="fs-4">
+                    Sidebar
+                </span>
+                <hr>
+                <ul class="nav nav-pills flex-column mb-auto">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link text-white">
+                            EwA Gruppe G04
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <div class="accordion" id="bookShopNavList">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="bookShopHeader">
+                                    <button class="accordion-button collapsed text-white bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#linkList" aria-expanded="false" aria-controls="linkList">
+                                        Buchshop
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="linkList" class="accordion-collapse collapse" aria-labelledby="bookShopHeader" data-bs-parent="#bookShopNavList">
+                                <div class="accordion-body">
+                                    <ul class="list-group">
+                                        <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+                                            First item
+                                        </a>
+                                        <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+                                            Second item
+                                        </a>
+                                        <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+                                            Third item
+                                        </a>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a href="" class="nav-link text-white">
-                        Verwaltung
-                    </a>
-                </li>
-            </ul>
-            <hr>
-        </div>
-        <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark fixed-right" style="width: 55%;">
-            <?php
-            // host, user, password, database
-            $db_con = new mysqli("localhost", "g04", "ed67ford", "g04")
-                or die("Keine Verbindung zur Datenbank moeglich: ");
-            echo '<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link text-white">
+                            Verwaltung
+                        </a>
+                    </li>
+                </ul>
+                <hr>
+            </div>
+            <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark fixed-right" style="width: 55%;">
+                <?php
+                // host, user, password, database
+                $db_con = new mysqli("localhost", "g04", "ed67ford", "g04")
+                    or die("Keine Verbindung zur Datenbank moeglich: ");
+                echo '<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
                     <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
                     <div class="toast-header">
                         <img src="..." class="rounded me-2" alt="...">
@@ -85,34 +86,35 @@
                     </div>
                 </div>
                 ';
-            $query = "Select * FROM buecher;";
-            $result = $db_con->query($query) or die("Anfrage fehlgeschlagen");
-            if ($result->num_rows > 0) {
-                echo "<table class='table table-dark table-striped'>\n";
-                while ($line = $result->fetch_assoc()) {
-                    echo "\t<thead class='table-dark'>";
-                    echo "\t\t<th scope='col'>Produkttitel</th>";
-                    echo "\t\t<th scope='col>Autorenname</th>";
-                    echo "\t</thead>";
-                    echo "\t<a href='detail.php?detailID=" . $line['ID'] > "<tr>\n";
-                    echo "\t\t<td>" . $line['Produkttitel'] . "</td>\n";
-                    echo "\t\t<td>" . $line['Autorenname'] . "</td>\n";
-                    echo "\t</tr></a>\n";
+                $query = "Select * FROM buecher;";
+                $result = $db_con->query($query) or die("Anfrage fehlgeschlagen");
+                if ($result->num_rows > 0) {
+                    echo "<table class='table table-dark table-striped'>\n";
+                    echo "\t<thead class='table-dark'>\n";
+                    echo "\t\t<th scope='col'>Produkttitel</th>\n";
+                    echo "\t\t<th scope='col>Autorenname</th>\n";
+                    echo "\t</thead>\n";
+                    while ($line = $result->fetch_assoc()) {
+                        echo "\t<a href='detail.php?detailID=" . $line['ID'] > "<tr>\n";
+                        echo "\t\t<td>" . $line['Produkttitel'] . "</td>\n";
+                        echo "\t\t<td>" . $line['Autorenname'] . "</td>\n";
+                        echo "\t</tr></a>\n";
+                    }
+                    echo "</table>\n";
                 }
-                echo "</table>\n";
-            }
-            $db_con->close();
-            ?>
+                $db_con->close();
+                ?>
+            </div>
+            <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark fixed-right" style="width: 22.5%;">
+                <span class="fs-4">
+                    Aside
+                </span>
+                <hr>
+                Test content on the side
+                <hr>
+            </div>
         </div>
-        <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark fixed-right" style="width: 22.5%;">
-            <span class="fs-4">
-                Aside
-            </span>
-            <hr>
-            Test content on the side
-            <hr>
-        </div>
-    </div>
+    </main>
     <footer class="py-3 my-4">
         <ul class="nav justify-content-center border-bottom pb-3 mb-3">
             <li class="nav-item px-2 text-muted">
