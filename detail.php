@@ -54,7 +54,7 @@
 
                         echo "<tr>\n";
                         echo "<td><strong>Mehrwertsteuer</strong></td>\n";
-                        echo "<td>" . $row['Mwstsatz'] . "</td>\n";
+                        echo "<td>" . $row['Mwstsatz'] . "%</td>\n";
                         echo "</tr>\n";
 
                         echo "<tr>\n";
