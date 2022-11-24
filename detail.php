@@ -1,7 +1,7 @@
 <?php
     echo htmlspecialchars($_GET['detailID']);
     $id_of_book = $_GET['detailID'];
-    $db_con = new mysqli("localhost", "root", "ed67ford", "g04")
+    $db_con = new mysqli("localhost", "g04", "ed67ford", "g04")
     or die("Keine Verbindung zur Datenbank moeglich: ");
     echo "<span> Verbindung erfolgreich. </span>";
 
