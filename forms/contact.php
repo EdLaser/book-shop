@@ -2,6 +2,7 @@
 <html lang="en">
 
 <?php include './../components/head.php' ?>
+
 <body>
     <?php include './../components/header.php' ?>
     <main>
@@ -42,7 +43,10 @@
                     </div>
                     <div class="mb-3">
                         <label for="postCode" class="form-label">Postleitzahl</label>
-                        <input type="text" class="form-control" id="postCode" max="50" name="postCode" onsubmit="validatePLZ()">
+                        <input type="text" class="form-control" id="postCode" max="50" name="postCode" onkeyup="validatePostCode()">
+                        <div class="alert alert-danger" hidden=True id="postCodeAlert">
+                            Bitte eine korrekte Postleitzahl eingeben.
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label for="yourRequest" class="form-label">Anfrage</label>
@@ -60,24 +64,29 @@
                     <button type="submit" class="btn btn-primary">Absenden</button>
                 </form>
             </div>
+            <div id="msg">
+
+            </div>
             <?php include './../components/aside.php' ?>
         </div>
     </main>
     <?php include './../components/footer.php' ?>
 </body>
 <script>
-    function validatePLZ() {
-        'use strict'
-        const form = document.getElementById("contact_form");
-        const postCode = parseInt(form["postCode"]);
-        console.log(postCode);
-        if (postCode < 100001 || postCode > 99998) {
-            const div = document.createElement("div");
-            const newContent = document.createTextNode(postCode);
-            newDiv.appendChild(newContent);
-            const currentDiv = document.getElementById("contact_form");
-            document.body.insertBefore(newDiv, currentDiv);
+    function isDEPostCode(code) {
+        return (/^\d{5}$/.test(code) && (parseInt(code) >= 01001 && parseInt(code) <= 99998)) ? true : false;
+    }
+
+    function validatePostCode() {
+        console.log("validateInput");
+        let postCode = document.getElementById("postCode").value;
+        let message = "";
+        if (isDEPostCode(postCode)) {
+            document.getElementById("postCodeAlert").hidden = true;
+        } else {
+            document.getElementById("postCodeAlert").hidden = false;
         }
     }
 </script>
+
 </html>
