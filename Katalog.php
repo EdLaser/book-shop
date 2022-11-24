@@ -73,9 +73,8 @@
                 $db_con = new mysqli("localhost", "g04", "ed67ford", "g04")
                     or die("Keine Verbindung zur Datenbank moeglich: ");
                 echo '<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
-                    <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
                     <div class="toast-header">
-                        <img src="..." class="rounded me-2" alt="...">
                         <strong class="me-auto">Datenbank</strong>
                         <small>1 second ago.</small>
                         <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
