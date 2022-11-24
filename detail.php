@@ -10,11 +10,9 @@
             <?php include './components/sidebar.php' ?>
             <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark fixed-right" style="width: 55%;">
                 <?php
-                echo htmlspecialchars($_GET['detailID']);
                 $id_of_book = $_GET['detailID'];
                 $db_con = new mysqli("localhost", "g04", "ed67ford", "g04")
                     or die("Keine Verbindung zur Datenbank moeglich: ");
-                echo "<span> Verbindung erfolgreich. </span>";
 
                 $query = "Select * FROM buecher WHERE id =" . $id_of_book . ";";
                 $result = $db_con->query($query) or die("Anfrage fehlgeschlagen");
