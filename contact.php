@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php include './components/head.php' ?>
+<?php include './../components/head.php' ?>
 <body>
-    <?php include './components/header.php' ?>
+    <?php include './../components/header.php' ?>
     <main>
 
         <div class="d-flex flex-row">
-            <?php include './components/sidebar.php' ?>
+            <?php include './../components/sidebar.php' ?>
             <div class="flex-shrink-0 p-3 text-bg-dark fixed-right" style="width: 55%;">
                 <h1 role="lead">
                     Kontaktieren sie uns!
@@ -60,10 +60,10 @@
                     <button type="submit" class="btn btn-primary">Absenden</button>
                 </form>
             </div>
-            <?php include './components/aside.php' ?>
+            <?php include './../components/aside.php' ?>
         </div>
     </main>
-    <?php include './components/footer.php' ?>
+    <?php include './../components/footer.php' ?>
 </body>
 
 </html>
