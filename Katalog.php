@@ -69,7 +69,7 @@
         <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark fixed-right" style="width: 55%;">
             <?php
             // host, user, password, database
-            $db_con = new mysqli("localhost", "root", "ed67ford", "g04")
+            $db_con = new mysqli("localhost", "g04", "ed67ford", "g04")
                 or die("Keine Verbindung zur Datenbank moeglich: ");
             echo '<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
                     <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
