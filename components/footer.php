@@ -7,7 +7,7 @@
             s80485
         </li>
         <li class="nav-item px-2 text-muted">
-            <a class="text-muted" href="file:///Users/ruben/dev/ewa/book-shop/contact.html">Kontakt</a>
+            <a class="text-muted" href="contact.php">Kontakt</a>
         </li>
     </ul>
     <p class="text-center text-muted">
