@@ -12,7 +12,7 @@
                 <h1 role="lead">
                     Kontaktieren sie uns!
                 </h1>
-                <form>
+                <form id="contact_form" method="POST">
                     <div class="mb-3">
                         <label for="firstName" class="form-label">Vorname</label>
                         <input type="text" class="form-control" id="firstName" aria-describedby="firstNameHelp" min="2" required>
@@ -37,12 +37,12 @@
                         <input type="text" class="form-control" id="street" max="50">
                     </div>
                     <div class="mb-3">
-                        <label for="street" class="form-label">Ort</label>
-                        <input type="text" class="form-control" id="street" max="50">
+                        <label for="ort" class="form-label">Ort</label>
+                        <input type="text" class="form-control" id="ort" max="50">
                     </div>
                     <div class="mb-3">
                         <label for="postCode" class="form-label">Postleitzahl</label>
-                        <input type="text" class="form-control" id="postCode" max="50">
+                        <input type="text" class="form-control" id="postCode" max="50" name="postCode" onsubmit="validatePLZ()">
                     </div>
                     <div class="mb-3">
                         <label for="yourRequest" class="form-label">Anfrage</label>
@@ -65,5 +65,19 @@
     </main>
     <?php include './../components/footer.php' ?>
 </body>
-
+<script>
+    function validatePLZ() {
+        'use strict'
+        const form = document.getElementById("contact_form");
+        const postCode = parseInt(form["postCode"]);
+        console.log(postCode);
+        if (postCode < 100001 || postCode > 99998) {
+            const div = document.createElement("div");
+            const newContent = document.createTextNode(postCode);
+            newDiv.appendChild(newContent);
+            const currentDiv = document.getElementById("contact_form");
+            document.body.insertBefore(newDiv, currentDiv);
+        }
+    }
+</script>
 </html>
