@@ -21,14 +21,14 @@
                 <div id="linkList" class="accordion-collapse collapse" aria-labelledby="bookShopHeader" data-bs-parent="#bookShopNavList">
                     <div class="accordion-body">
                         <ul class="list-group">
-                            <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
-                                First item
+                            <a href="index.php" class="list-group-item list-group-item-action bg-dark text-white">
+                                Home
+                            </a>
+                            <a href="./katalog.php" class="list-group-item list-group-item-action bg-dark text-white">
+                                Katalog
                             </a>
                             <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
-                                Second item
-                            </a>
-                            <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
-                                Third item
+                                Second
                             </a>
                         </ul>
                     </div>
