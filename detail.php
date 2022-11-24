@@ -13,7 +13,7 @@
         while($line = $result-> fetch_assoc()) {
             echo "\t<tr>\n";
             foreach($line as $col_val) {
-                echo "<td>$col_value</td>";
+                echo "<td>$col_val</td>";
             }
             echo "\t</tr>\n";
         }
