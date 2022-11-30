@@ -156,25 +156,18 @@
 <script src="js/receipt.js"></script>
 <script>
     function toggleClockVisibility() {
-        $("#clock").toggle()
+        $("#clock").toggle("slow")
+    }
+    
+    function toggleCSS(elem) {
+        $(elem).css('font-size') > '16px' ? $(elem).css({"fontSize": "16px", "fontWeight": "400"}) : $(elem).css({"fontSize": "24px", "fontWeight": "bold"});
     }
 
     function betterReadability() {
-        $('#order').css({"fontSize": "24px", "fontWeight": "bold"})
-        $('#amount').css("fontSize", "24px");
-        $('#amount').css("fontWeight", "bold");
-
-        $('#netto').css("fontSize", "24px");
-        $('#netto').css("fontWeight", "bold");
-
-        $('#mwst').css("fontSize", "24px");
-        $('#mwst').css("fontWeight", "bold");
-
-        $('#amount').css("fontSize", "24px");
-        $('#amount').css("fontWeight", "bold");
-
-        $('#title').css("fontSize", "24px");
-        $('#title').css("fontWeight", "bold");
+        toggleCSS('#order');
+        toggleCSS('#amount');
+        toggleCSS('#netto');
+        toggleCSS('#mwst');
     }
 </script>
 </html>
