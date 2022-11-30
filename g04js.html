@@ -92,20 +92,26 @@
                     <div class="col" id="outerW"></div>
                     <div class="col" id="outerH"></div>
                 </div>
+                <hr>
+                <h4>Bestellvorgang</h4>
+                <span class="badge bg-danger" id="warning"></span>
                 <form action="">
-                    <div class="col m-3" onsubmit="">
-                        <label for="amount" ><span id="labelAmount"></span></label>
-                        <input type="number" id="amount" class="form-control" placeholder="Anzahl in Stk" value="2" onpinput="validate(this, 'Amount')">
+                    <label for="amount">Stückzahl in Stück</label>
+                    <div class="col mt-3">
+                        <input type="number" id="amount" class="form-control" placeholder="Anzahl in Stk" value="2"
+                            onkeypress="checkInputs();">
                     </div>
-                    <div class="col m-3">
-                        <label for="netto"><span id="labelNetto"></span></label>
-                        <input type="number" id="netto" class="form-control" placeholder="Netto Preis in €" value="10" onpinput="validate(this, 'Netto')">
+                    <div class="col mt-3">
+                        <label for="netto">Preis Netto in €</label>
+                        <input type="number" id="netto" class="form-control" placeholder="Netto Preis in €" value="10"
+                            onkeypress="checkInputs();">
                     </div>
-                    <div class="col m-3">
-                        <label for="mwst"><span id="labelMwst"></span></label>
-                        <input type="number" id="mwst" class="form-control" placeholder="MwSt in %" value="7" onpinput="validate(this, 'Mwst')">
+                    <div class="col mt-3">
+                        <label for="mwst">Mehrwertsteuer in %</label>
+                        <input type="number" id="mwst" class="form-control" placeholder="MwSt in %" value="7"
+                            onkeypress="checkInputs();">
                     </div>
-                    <div class="col m-3" id="receipt"></div>
+                    <div class="col mt-3" id="receipt"></div>
                 </form>
             </div>
             <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark fixed-right" style="width: 22.5%;">
