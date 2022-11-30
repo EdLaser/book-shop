@@ -93,23 +93,22 @@
                     <div class="col" id="outerH"></div>
                 </div>
                 <hr>
-                <h4>Bestellvorgang</h4>
-                <span class="badge bg-danger" id="warning"></span>
+                <h4>Bestellvorgang <span class="badge bg-danger" id="warning"></span></h4>
                 <form action="">
                     <label for="amount">Stückzahl in Stück</label>
                     <div class="col mt-3">
                         <input type="number" id="amount" class="form-control" placeholder="Anzahl in Stk" value="2"
-                            onkeypress="checkInputs();">
+                            onkeyup="checkInputs();">
                     </div>
                     <div class="col mt-3">
                         <label for="netto">Preis Netto in €</label>
                         <input type="number" id="netto" class="form-control" placeholder="Netto Preis in €" value="10"
-                            onkeypress="checkInputs();">
+                            onkeyup="checkInputs();">
                     </div>
                     <div class="col mt-3">
                         <label for="mwst">Mehrwertsteuer in %</label>
                         <input type="number" id="mwst" class="form-control" placeholder="MwSt in %" value="7"
-                            onkeypress="checkInputs();">
+                            onkeyup="checkInputs();">
                     </div>
                     <div class="col mt-3" id="receipt"></div>
                 </form>
