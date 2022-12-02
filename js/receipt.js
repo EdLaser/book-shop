@@ -14,11 +14,15 @@ function checkInputs() {
 }
 
 function calculateReceipt(amount, netto, mwst) {
+    const formatter = new Intl.NumberFormat('de-DE', {
+        style: 'currency',
+        currency: 'EUR'
+    });
     const wholeNetto = amount * netto;
     const wholeBrutto = (wholeNetto * (1 + mwst * 0.01)).toFixed(2);
 
-    document.getElementById('nettoResult').innerHTML = "Netto: " + wholeNetto + "€"
-    document.getElementById('bruttoResult').innerHTML = "Brutto: " + wholeBrutto + "€ mit " + mwst + "% MwSt"
+    document.getElementById('nettoResult').innerHTML = "Netto: " + formatter.format(wholeNetto)
+    document.getElementById('bruttoResult').innerHTML = "Brutto: " + formatter.format(wholeBrutto) + " mit " + mwst + "% MwSt"
 }
 
 function validate(value) {
