@@ -10,7 +10,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="index.php" class="list-group-item list-group-item-action bg-dark text-white">
+            <a href="index.php" class="nav-link text-white">
                 Home
             </a>
         </li>
