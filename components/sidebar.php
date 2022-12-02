@@ -25,6 +25,11 @@
             </a>
         </li>
         <li class="nav-item">
+            <a href="./g04js.html" class="nav-link text-white">
+                Javascript Demo
+            </a>
+        </li>
+        <li class="nav-item">
             <a href="" class="nav-link text-white">
                 Verwaltung
             </a>
