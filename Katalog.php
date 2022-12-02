@@ -16,6 +16,7 @@
                             <input class="form-control me-2" type="searchs" placeholder="Autor" aria-label="Autor" name="autor">
                             <button class="btn btn-outline-primary" type="submit">Suchen</button>
                         </form>
+                        <a class="btn btn-outline-danger ml-2" href="katalog.php" role="button">Filter löschen</a>
                     </div>
                 </div>
 
@@ -27,13 +28,13 @@
 
                     if (!empty($_GET['titel']) and !empty($_GET['autor'])) {
                         // Both set
-                        $search_query .= "Produkttitel = '" . $_GET['titel'] ."'" . " AND Autorenname = '" . $_GET['autor'] ."'";
+                        $search_query .= "Produkttitel LIKE '" . $_GET['titel'] ."%'" . " AND Autorenname LIKE '" . $_GET['autor'] ."%'";
                     } elseif (empty($_GET['titel']) and !empty($_GET['autor'])) {
                         // No Title
-                        $search_query .= "Autorenname = '" . $_GET['autor'] ."'";
+                        $search_query .= "Autorenname LIKE '" . $_GET['autor'] ."%'";
                     } elseif (empty($_GET['autor']) and !empty($_GET['titel'])) {
                         // No Author but Title
-                        $search_query .= "Produkttitel = '" . $_GET['titel'] ."'";
+                        $search_query .= "Produkttitel LIKE '" . $_GET['titel'] ."%'";
                     }
 
                     $search_query .= ";";
@@ -64,7 +65,6 @@
                     or die("Keine Verbindung zur Datenbank moeglich: ");
 
                 (isset($_GET['autor']) or isset($_GET['titel'])) ? $query = search() : $query = "Select * FROM buecher;";
-                echo $query;
                 
                 $result = $db_con->query($query) or die("Anfrage fehlgeschlagen");
                 displayOutput($result);
