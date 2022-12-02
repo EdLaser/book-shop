@@ -5,11 +5,12 @@ function checkInputs() {
 
     if (validate(amount) && validate(netto) && validate(mwst)) {
         document.getElementById('warning').innerHTML = ""
+        calculateReceipt(amount, netto, mwst);
     } else {
         document.getElementById('warning').innerHTML = "Negative Werte nicht erlaubt!"
+        document.getElementById('nettoResult').innerHTML = ""
+        document.getElementById('bruttoResult').innerHTML = ""
     }
-
-    calculateReceipt(amount, netto, mwst);
 }
 
 function calculateReceipt(amount, netto, mwst) {
