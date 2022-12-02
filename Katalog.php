@@ -27,7 +27,7 @@
 
                     if (!empty($_GET['titel']) and !empty($_GET['autor'])) {
                         // Both set
-                        $search_query .= "Produkttitel = " . $_GET['titel'] . "AND Autorenname = '" . $_GET['autor'] ."'";
+                        $search_query .= "Produkttitel = '" . $_GET['titel'] ."'" . " AND Autorenname = '" . $_GET['autor'] ."'";
                     } elseif (empty($_GET['titel']) and !empty($_GET['autor'])) {
                         // No Title
                         $search_query .= "Autorenname = '" . $_GET['autor'] ."'";
@@ -65,8 +65,8 @@
 
                 (isset($_GET['autor']) or isset($_GET['titel'])) ? $query = search() : $query = "Select * FROM buecher;";
                 echo $query;
+                
                 $result = $db_con->query($query) or die("Anfrage fehlgeschlagen");
-
                 displayOutput($result);
 
 
