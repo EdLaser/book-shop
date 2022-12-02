@@ -16,7 +16,8 @@ function calculateReceipt(amount, netto, mwst) {
     const wholeNetto = amount * netto;
     const wholeBrutto = (wholeNetto * (1 + mwst * 0.01)).toFixed(2);
 
-    document.getElementById('receipt').innerHTML = "<hr>\n<div class='row'>Preis Netto " + wholeNetto + "€</div>\n<div class='row'> Preis Brutto " + wholeBrutto + "€</div>"
+    document.getElementById('nettoResult').innerHTML = "Netto: " + wholeNetto + "€"
+    document.getElementById('bruttoResult').innerHTML = "Brutto: " + wholeBrutto + "€ mit " + mwst + "% MwSt"
 }
 
 function validate(value) {
