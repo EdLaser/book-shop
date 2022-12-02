@@ -8,11 +8,13 @@ function checkInputs() {
     } else {
         document.getElementById('warning').innerHTML = "Negative Werte nicht erlaubt!"
     }
+
+    calculateReceipt(amount, netto, mwst);
 }
 
 function calculateReceipt(amount, netto, mwst) {
     const wholeNetto = amount * netto;
-    const wholeBrutto = wholeNetto * mwst;
+    const wholeBrutto = (wholeNetto * (1 + mwst * 0.01)).toFixed(2);
 
     document.getElementById('receipt').innerHTML = "<hr>\n<div class='row'>Preis Netto " + wholeNetto + "€</div>\n<div class='row'> Preis Brutto " + wholeBrutto + "€</div>"
 }
