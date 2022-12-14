@@ -12,4 +12,5 @@ function setLeadingZero(time) {
     time = (time < 10 ? '0' : '') + time;
     return time;
 }
-document.addEventListener('DOMContentLoaded', setTime);
+
+export { setTime }
