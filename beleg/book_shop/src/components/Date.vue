@@ -1,5 +1,5 @@
 <template>
-    <h2 id="date">Date: {{ date }}</h2>
+    <h2 id="date" class="mx-2">Date: {{ date }}</h2>
 </template>
 
 <script>
