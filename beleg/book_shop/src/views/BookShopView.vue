@@ -3,7 +3,5 @@ import BookShop from '../components/BookShop.vue'
 </script>
 
 <template>
-    <main>
-        <BookShop />
-    </main>
+    <BookShop />
 </template>
