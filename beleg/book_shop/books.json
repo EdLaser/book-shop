@@ -1,0 +1,44 @@
+[
+    {
+        "ID": "1",
+        "Produktcode": "ABLOKJADWL2012ALKD",
+        "Produkttitel": "Das Schweigen der Manus",
+        "Autorenname": "Peter Maffay",
+        "Verlagsname": "Pinguin Verlag",
+        "PreisNetto": "22.00",
+        "Mwstsatz": "7.00",
+        "PreisBrutto": "23.00",
+        "Lagerbestand": "10",
+        "Kurzinhalt": "Im Schweigen der Manu wird Manu zum schweigen gebracht, damit sie schweigt.",
+        "Gewicht": "1.00",
+        "LinkGrafikdatei": "noch keiner"
+    },
+    {
+        "ID": "2",
+        "Produktcode": "BLASKDZJLA20892765LDPOAI",
+        "Produkttitel": "PHP f\u00fcr Dumme",
+        "Autorenname": "Jens Jeremies",
+        "Verlagsname": "FIFA inC",
+        "PreisNetto": "30.99",
+        "Mwstsatz": "7.00",
+        "PreisBrutto": "28.20",
+        "Lagerbestand": "9",
+        "Kurzinhalt": "Jens Jeremies beschreibt eindr\u00fccklich wie sch\u00f6n und toll PHP sein kann und vermittelt auf einfache Art und Weise Grundkenntnisse f\u00fcr jeden Entwickler.",
+        "Gewicht": "1.36",
+        "LinkGrafikdatei": "noch keine"
+    },
+    {
+        "ID": "3",
+        "Produktcode": "LPPAKDGAJDWBNIA0856NJKNAD",
+        "Produkttitel": "Docker ist auch nur ein Wal",
+        "Autorenname": "Mobby Dick",
+        "Verlagsname": "Walnuss Verlag",
+        "PreisNetto": "35.00",
+        "Mwstsatz": "19.00",
+        "PreisBrutto": "28.31",
+        "Lagerbestand": "25",
+        "Kurzinhalt": "Mit Geduld und Vernunft beschriebt Mobby Dick die Grundlagen in Docker und der Leser gewinnt dadurch eindrucksvolle Eindr\u00fccke wie es ist ein Wal in einem Container zu sein.",
+        "Gewicht": "9.00",
+        "LinkGrafikdatei": "noch keine"
+    }
+]

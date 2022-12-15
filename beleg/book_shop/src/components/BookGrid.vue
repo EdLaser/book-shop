@@ -13,8 +13,8 @@ import BookItem from './BookItem.vue';
         <tbody>
             <template v-for="book in books">
                 <BookItem>
-                    <template v-slot:bookName>{{ book.name }}</template>
-                    <template v-slot:amount>{{ book.amount }}</template>
+                    <template v-slot:bookName>{{ book.Produkttitel }}</template>
+                    <template v-slot:amount>{{ book.Lagerbestand }}</template>
                     <template v-slot:buttons>
                         <div class="btn-group">
                             <button @click="increase(book)" class="btn btn-success">+</button>
@@ -35,10 +35,12 @@ import BookItem from './BookItem.vue';
 //     console.log(xmlhttp.responseText);
 // });
 // xmlhttp.send();
+import data from '../../books.json'
+console.log(data)
 export default {
     data() {
         return {
-            books: [{ 'name': 'Test1', 'amount': 2 }, { 'name': 'Test1', 'amount': 2 }]
+            books: data
         }
     },
     methods: {
