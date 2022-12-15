@@ -14,8 +14,6 @@ if ($result->num_rows > 0) {
     }
     $db_con->close();
 
-    $json = json_encode(($result_array));
-    
-    echo $json;
+    header('Content-type: application/json charset=utf-8');
+    echo json_encode(($result_array));
 }
-?>
