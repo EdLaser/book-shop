@@ -21,7 +21,7 @@ import BookItem from './BookItem.vue';
                             <button @click="decrease(book)" class="btn btn-danger">-</button>
                         </div>
                     </template>
-                    <template v-slot:warning v-if="book.amount === 0">Sold out!</template>
+                    <template v-slot:warning v-if="book.Lagerbestand === 0">Sold out!</template>
                 </BookItem>
             </template>
         </tbody>
@@ -45,10 +45,10 @@ export default {
     },
     methods: {
         increase(book) {
-            book.amount += 1;
+            book.Lagerbestand += 1;
         },
         decrease(book) {
-            book.amount > 0 ? book.amount -= 1 : book.amount = 0;
+            book.Lagerbestand > 0 ? book.Lagerbestand -= 1 : book.Lagerbestand = 0;
         }
     }
 }
