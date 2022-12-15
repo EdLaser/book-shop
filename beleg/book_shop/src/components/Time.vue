@@ -23,7 +23,6 @@ export default {
             m = this.setLeadingZero(m);
             s = this.setLeadingZero(s);
             let time = h + ':' + m + ':' + s;
-            console.log(time)
             this.time = time
         },
         setLeadingZero(time) {
