@@ -3,5 +3,5 @@
 </script>
 
 <template>
-    <p id="date">Test Date</p>
+    <h2 id="date">Test Date</h2>
 </template>
