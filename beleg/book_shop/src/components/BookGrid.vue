@@ -29,6 +29,12 @@ import BookItem from './BookItem.vue';
 </template>
 
 <script>
+// let xmlhttp = new XMLHttpRequest();
+// xmlhttp.open("GET", "../../fetch_books.php");
+// xmlhttp.addEventListener('load', function() {
+//     console.log(xmlhttp.responseText);
+// });
+// xmlhttp.send();
 export default {
     data() {
         return {
