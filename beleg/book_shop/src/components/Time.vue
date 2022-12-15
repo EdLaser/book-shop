@@ -1,5 +1,5 @@
 <template>
-    <p id="time">{{ time }}</p>
+    <h2 id="time" class="lead">{{ time }}</h2>
 </template>
 
 <script>
