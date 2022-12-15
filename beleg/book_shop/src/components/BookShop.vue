@@ -1,7 +1,14 @@
-<script setup>
+<script>
 import Date from './Date.vue';
 import Time from './Time.vue';
+
+export default {
+    components: {
+        Date, Time
+    }
+}
 </script>
+
 <template>
     <div class="d-flex flex-row">
         <div class="d-flex flex-column text-bg-dark">

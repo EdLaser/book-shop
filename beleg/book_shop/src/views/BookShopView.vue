@@ -1,5 +1,11 @@
-<script setup>
-import BookShop from '../components/BookShop.vue'
+<script>
+import BookShop from '../components/BookShop.vue';
+
+export default {
+    components: {
+        BookShop
+    }
+}
 </script>
 
 <template>

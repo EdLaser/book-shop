@@ -1,6 +1,11 @@
-<script setup>
+<script>
 import { RouterLink, RouterView } from 'vue-router'
 import BookShopView from './views/BookShopView.vue';
+export default {
+    components: {
+        BookShopView
+    }
+}
 </script>
 
 <template>
