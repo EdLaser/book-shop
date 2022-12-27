@@ -1,5 +1,6 @@
 <script setup>
 import BookItem from './BookItem.vue';
+import { store } from './store';
 
 </script>
 
@@ -9,7 +10,8 @@ import BookItem from './BookItem.vue';
             <form role="search" method="">
                 <div class="row">
                     <div class="col">
-                        <input class="form-control me-2" type="search" placeholder="Suche..." aria-label="Suche" v-model="search">
+                        <input class="form-control me-2" type="search" placeholder="Suche..." aria-label="Suche"
+                            v-model="search">
                     </div>
                 </div>
             </form>
@@ -31,7 +33,7 @@ import BookItem from './BookItem.vue';
                             <template v-slot:amount>{{ book.Lagerbestand }}</template>
                             <template v-slot:buttons>
                                 <div class="btn-group">
-                                    <button @click="increase(book)" class="btn btn-success">+</button>
+                                    <button @click="addToOrder(book)" class="btn btn-success">Bestellen</button>
                                     <button @click="decrease(book)" class="btn btn-danger">-</button>
                                 </div>
                             </template>
@@ -61,8 +63,9 @@ export default {
         }
     },
     methods: {
-        increase(book) {
-            book.Lagerbestand += 1;
+        addToOrder(book) {
+            let item = store.order.find(item => item.title === book.Produkttitel);
+            item ? item.count += 1 : store.order.push({ "title": book.Produkttitel, "count": 1, "price": book.PreisBrutto });
         },
         decrease(book) {
             book.Lagerbestand > 0 ? book.Lagerbestand -= 1 : book.Lagerbestand = 0;
