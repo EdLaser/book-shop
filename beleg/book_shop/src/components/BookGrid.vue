@@ -65,7 +65,7 @@ export default {
     methods: {
         addToOrder(book) {
             let item = store.order.find(item => item.title === book.Produkttitel);
-            item ? item.count += 1 : store.order.push({ "title": book.Produkttitel, "count": 1, "price": book.PreisBrutto });
+            item ? item.count += 1 : store.order.push({ "title": book.Produkttitel, "count": 1, "price": parseFloat(book.PreisNetto) });
         },
         decrease(book) {
             book.Lagerbestand > 0 ? book.Lagerbestand -= 1 : book.Lagerbestand = 0;
