@@ -4,8 +4,7 @@ import { store } from './store';
 export default {
     data() {
         return {
-            amountOfBooks: 0,
-            price: 0
+            price: ""
         }
     },
     computed: {
@@ -14,31 +13,26 @@ export default {
         },
         orderItems() {
             return store.order.length
+        },
+        bookAmount() {
+            return store.bookAmount;
         }
     },
     methods: {
         showOrder() {
             return store.order;
         },
-        calcAmountOfBooks() {
-            let amount = 0;
-            for (let item of this.order) {
-                amount += item.count;
-            }
-            this.amountOfBooks = amount;
-        },
         sumPrice() {
             let price = 0;
             for (let item of this.order) {
-                price += item.price;
+                price += item.price * item.count, 2;
             }
-            this.price = price
+            this.price = price.toFixed(2)
         }
     },
     watch: {
-        orderItems() {
+        bookAmount() {
             this.sumPrice();
-            this.calcAmountOfBooks();
         },
     }
 }
@@ -76,7 +70,7 @@ export default {
         </tbody>
     </table>
     <div class="row">
-        <div class="col"><span>Anzahl Bücher: {{ this.amountOfBooks }}</span></div>
+        <div class="col"><span>Anzahl Bücher: {{ this.bookAmount }}</span></div>
         <div class="col"><span>Preis: {{ this.price }} €</span></div>
     </div>
     <hr>
