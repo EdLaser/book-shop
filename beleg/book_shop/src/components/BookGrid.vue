@@ -1,5 +1,6 @@
 <script setup>
 import BookItem from './BookItem.vue';
+import { store } from './store';
 </script>
 
 <template>
@@ -40,7 +41,7 @@ console.log(data)
 export default {
     data() {
         return {
-            books: data
+            books: store.books
         }
     },
     methods: {
@@ -50,6 +51,10 @@ export default {
         decrease(book) {
             book.Lagerbestand > 0 ? book.Lagerbestand -= 1 : book.Lagerbestand = 0;
         }
+    },
+    created() {
+        store.books = data;
     }
+    
 }
 </script>
