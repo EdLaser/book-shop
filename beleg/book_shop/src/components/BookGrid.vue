@@ -1,32 +1,52 @@
 <script setup>
 import BookItem from './BookItem.vue';
-import { store } from './store';
+
 </script>
 
 <template>
-    <table class="table table-dark table-striped">
-        <thead>
-            <tr>
-                <th scope="col">Produktname</th>
-                <th scope="col">Anzahl</th>
-            </tr>
-        </thead>
-        <tbody>
-            <template v-for="book in books">
-                <BookItem>
-                    <template v-slot:bookName>{{ book.Produkttitel }}</template>
-                    <template v-slot:amount>{{ book.Lagerbestand }}</template>
-                    <template v-slot:buttons>
-                        <div class="btn-group">
-                            <button @click="increase(book)" class="btn btn-success">+</button>
-                            <button @click="decrease(book)" class="btn btn-danger">-</button>
-                        </div>
+    <div class="d-flex flex-row">
+        <div class="d-flex flex-column">
+            <form role="search" method="">
+                <div class="row">
+                    <div class="col">
+                        <input class="form-control me-2" type="search" placeholder="Titel" aria-label="Titel"
+                            name="titel">
+                    </div>
+                    <div class="col">
+                        <input class="form-control me-2" type="search" placeholder="Autor" aria-label="Autor"
+                            name="autor">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="d-flex flex-row">
+        <div class="d-flex flex-column">
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Produktname</th>
+                        <th scope="col">Anzahl</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template v-for="book in books">
+                        <BookItem>
+                            <template v-slot:bookName>{{ book.Produkttitel }}</template>
+                            <template v-slot:amount>{{ book.Lagerbestand }}</template>
+                            <template v-slot:buttons>
+                                <div class="btn-group">
+                                    <button @click="increase(book)" class="btn btn-success">+</button>
+                                    <button @click="decrease(book)" class="btn btn-danger">-</button>
+                                </div>
+                            </template>
+                            <template v-slot:warning v-if="book.Lagerbestand === 0">Sold out!</template>
+                        </BookItem>
                     </template>
-                    <template v-slot:warning v-if="book.Lagerbestand === 0">Sold out!</template>
-                </BookItem>
-            </template>
-        </tbody>
-    </table>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -41,7 +61,7 @@ import data from '../../books.json'
 export default {
     data() {
         return {
-            books: store.books
+            books: data
         }
     },
     methods: {
@@ -52,10 +72,5 @@ export default {
             book.Lagerbestand > 0 ? book.Lagerbestand -= 1 : book.Lagerbestand = 0;
         }
     },
-    beforeCreate() {
-        store.books = data;
-        console.log(store.books)
-    }
-    
 }
 </script>
