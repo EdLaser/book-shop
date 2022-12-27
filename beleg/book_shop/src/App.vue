@@ -25,7 +25,7 @@ export default {
                 <div class="d-flex flex-column">
                     <BookShopView />
                 </div>
-                <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark fixed-right">
+                <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark fixed-right" style="width: 40%">
                     <OrderOverViewComponent />
                 </div>
             </div>
