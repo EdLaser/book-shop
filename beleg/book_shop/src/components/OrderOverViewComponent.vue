@@ -25,16 +25,14 @@ export default {
             for (let item of this.order) {
                 amount += item.count;
             }
-            console.log("Amount: " + amount)
             this.amountOfBooks = amount;
         },
         sumPrice() {
             let price = 0;
-            for (let item in this.order) {
+            for (let item of this.order) {
                 price += item.price;
             }
             this.price = price
-            console.log(this.price)
         }
     },
     watch: {
