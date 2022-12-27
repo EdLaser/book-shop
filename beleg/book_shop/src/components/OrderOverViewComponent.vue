@@ -22,11 +22,11 @@ export default {
         },
         calcAmountOfBooks() {
             let amountOfBooks = 0;
-            for (orderItem in this.showOrder) {
-                amountOfBooks += orderItem.count;
+            for (item in this.showOrder) {
+                amountOfBooks += item.count;
             }
             console.log(amountOfBooks)
-            this.amountOfBooks = amountOfBooks;
+            this.amountOfBooks = amount;
         },
         sumPrice() {
             let price = 0;
@@ -34,6 +34,7 @@ export default {
                 price += item.price;
             }
             this.price = price
+            console.log(this.price)
         }
     },
     watch: {
