@@ -12,15 +12,19 @@ export default {
         amountOfBooks() {
             let amountOfBooks = 0;
             console.log(this.order)
-            // for (orderItem in this.order) {
-            //     amountOfBooks += orderItem.count;
-            // }
+            for (orderItem in this.showOrder) {
+                amountOfBooks += orderItem.count;
+            }
             return amountOfBooks;
         }
     },
+    methods: {
+        showOrder() {
+            return store.order;
+        }
+    },
     watch: {
-        order() { console.log(store.order) },
-        orderItems() { console.log(store.order.length) }
+        order() { console.log(this.amountOfBooks) },
     }
 }
 </script>
@@ -32,10 +36,15 @@ export default {
     <hr>
     <table class="table table-dark table-hover">
         <thead>
-            <th scope="col"><td>#</td></th>
-            
-            <th scope="col"><td>Titel</td></th>
-            <th scope="col"><td>Anzahl</td></th>
+            <th scope="col">
+            <td>#</td>
+            </th>
+            <th scope="col">
+            <td>Titel</td>
+            </th>
+            <th scope="col">
+            <td>Anzahl</td>
+            </th>
         </thead>
         <tbody v-if="orderItems > 0">
             <tr v-for="(orderItem, index) in order">
@@ -52,8 +61,8 @@ export default {
         </tbody>
     </table>
     <div class="row">
-        <div class="col"><span>Anzahl Bücher: {{ amountOfBooks }}</span></div>
-        <div class="col"><span>Preis: </span></div>
+        <div class="col"><span>Anzahl Bücher: {{ this.amountOfBooks }}</span></div>
+        <div class="col"><span>Preis: {{ }}</span></div>
     </div>
     <hr>
 </template>
