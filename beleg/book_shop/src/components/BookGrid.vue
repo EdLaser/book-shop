@@ -9,12 +9,7 @@ import BookItem from './BookItem.vue';
             <form role="search" method="">
                 <div class="row">
                     <div class="col">
-                        <input class="form-control me-2" type="search" placeholder="Titel" aria-label="Titel"
-                            name="titel">
-                    </div>
-                    <div class="col">
-                        <input class="form-control me-2" type="search" placeholder="Autor" aria-label="Autor"
-                            name="autor">
+                        <input class="form-control me-2" type="search" placeholder="Suche..." aria-label="Suche" v-model="search">
                     </div>
                 </div>
             </form>
@@ -30,7 +25,7 @@ import BookItem from './BookItem.vue';
                     </tr>
                 </thead>
                 <tbody>
-                    <template v-for="book in books">
+                    <template v-for="book in filteredBooks">
                         <BookItem>
                             <template v-slot:bookName>{{ book.Produkttitel }}</template>
                             <template v-slot:amount>{{ book.Lagerbestand }}</template>
@@ -61,7 +56,8 @@ import data from '../../books.json'
 export default {
     data() {
         return {
-            books: data
+            books: data,
+            search: ""
         }
     },
     methods: {
@@ -72,5 +68,12 @@ export default {
             book.Lagerbestand > 0 ? book.Lagerbestand -= 1 : book.Lagerbestand = 0;
         }
     },
+    computed: {
+        filteredBooks() {
+            return this.books.filter(book => {
+                return book.Produkttitel.toLowerCase().indexOf(this.search.toLowerCase()) != -1;
+            })
+        }
+    }
 }
 </script>
