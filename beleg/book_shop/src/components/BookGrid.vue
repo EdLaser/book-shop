@@ -37,7 +37,7 @@ import { store } from './store';
 // });
 // xmlhttp.send();
 import data from '../../books.json'
-console.log(data)
+
 export default {
     data() {
         return {
@@ -52,8 +52,9 @@ export default {
             book.Lagerbestand > 0 ? book.Lagerbestand -= 1 : book.Lagerbestand = 0;
         }
     },
-    created() {
+    beforeCreate() {
         store.books = data;
+        console.log(store.books)
     }
     
 }
