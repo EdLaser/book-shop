@@ -5,10 +5,10 @@ import BookGrid from './BookGrid.vue';
 
 export default {
     components: {
-    Date,
-    Time,
-    BookGrid
-}
+        Date,
+        Time,
+        BookGrid
+    }
 }
 </script>
 
