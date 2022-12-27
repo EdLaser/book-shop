@@ -21,16 +21,16 @@ export default {
             return store.order;
         },
         calcAmountOfBooks() {
-            let amountOfBooks = 0;
-            for (item in this.showOrder) {
-                amountOfBooks += item.count;
+            let amount = 0;
+            for (let item of this.order) {
+                amount += item.count;
             }
-            console.log(amountOfBooks)
+            console.log("Amount: " + amount)
             this.amountOfBooks = amount;
         },
         sumPrice() {
             let price = 0;
-            for (item in this.showOrder) {
+            for (let item in this.order) {
                 price += item.price;
             }
             this.price = price
@@ -38,7 +38,7 @@ export default {
         }
     },
     watch: {
-        order() {
+        orderItems() {
             this.sumPrice();
             this.calcAmountOfBooks();
         },
@@ -79,7 +79,7 @@ export default {
     </table>
     <div class="row">
         <div class="col"><span>Anzahl Bücher: {{ this.amountOfBooks }}</span></div>
-        <div class="col"><span>Preis: {{ this.price }}</span></div>
+        <div class="col"><span>Preis: {{ this.price }} €</span></div>
     </div>
     <hr>
 </template>
