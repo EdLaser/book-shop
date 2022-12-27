@@ -1,5 +1,5 @@
 import { reactive } from 'vue';
 
-export const store = reactive({
-    books: []
+export let store = reactive({
+    books: [{}, {}, {}]
 });
