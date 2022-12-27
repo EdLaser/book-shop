@@ -2,29 +2,45 @@
 import { store } from './store';
 
 export default {
+    data() {
+        return {
+            amountOfBooks: 0,
+            price: 0
+        }
+    },
     computed: {
         order() {
             return store.order;
         },
         orderItems() {
             return store.order.length
-        },
-        amountOfBooks() {
-            let amountOfBooks = 0;
-            console.log(this.order)
-            for (orderItem in this.showOrder) {
-                amountOfBooks += orderItem.count;
-            }
-            return amountOfBooks;
         }
     },
     methods: {
         showOrder() {
             return store.order;
+        },
+        calcAmountOfBooks() {
+            let amountOfBooks = 0;
+            for (orderItem in this.showOrder) {
+                amountOfBooks += orderItem.count;
+            }
+            console.log(amountOfBooks)
+            this.amountOfBooks = amountOfBooks;
+        },
+        sumPrice() {
+            let price = 0;
+            for (item in this.showOrder) {
+                price += item.price;
+            }
+            this.price = price
         }
     },
     watch: {
-        order() { console.log(this.amountOfBooks) },
+        order() {
+            this.sumPrice();
+            this.calcAmountOfBooks();
+        },
     }
 }
 </script>
@@ -62,7 +78,7 @@ export default {
     </table>
     <div class="row">
         <div class="col"><span>Anzahl Bücher: {{ this.amountOfBooks }}</span></div>
-        <div class="col"><span>Preis: {{ }}</span></div>
+        <div class="col"><span>Preis: {{ this.price }}</span></div>
     </div>
     <hr>
 </template>
