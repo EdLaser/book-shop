@@ -13,13 +13,5 @@ export default {
 </script>
 
 <template>
-    <div class="d-flex flex-row">
-        <div class="d-flex flex-column text-bg-dark">
-            <Date />
-        </div>
-        <div class="d-flex flex-column text-bg-dark">
-            <Time />
-        </div>
-    </div>
     <BookGrid />
 </template>
