@@ -74,4 +74,8 @@ export default {
         <div class="col"><span>Preis: {{ this.price }} €</span></div>
     </div>
     <hr>
+    <form action="/checkout">
+        <button type="submit" class="btn btn-success">Bestellung abschließen</button>
+    </form>
+    <hr>
 </template>
