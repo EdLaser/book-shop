@@ -74,7 +74,12 @@ export default {
             }
         },
         decrease(book) {
-            book.Lagerbestand > 0 ? book.Lagerbestand -= 1 : book.Lagerbestand = 0;
+            let item = store.order.find(item => item.title === book.Produkttitel);
+            item.count > 1 ? item.count-- : store.order = this.removeByTitle(store.order, book.Produkttitel);
+            store.bookAmount--;
+        },
+        removeByTitle(list, title) {
+            return list.filter(item => item.title !== title)
         }
     },
     computed: {
