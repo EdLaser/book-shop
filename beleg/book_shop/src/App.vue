@@ -5,9 +5,9 @@ import OrderOverViewComponent from './components/OrderOverViewComponent.vue';
 
 export default {
     components: {
-    BookShopView,
-    OrderOverViewComponent
-}
+        BookShopView,
+        OrderOverViewComponent
+    }
 }
 </script>
 
