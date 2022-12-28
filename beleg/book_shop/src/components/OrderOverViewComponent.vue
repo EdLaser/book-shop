@@ -40,7 +40,7 @@ export default {
 
 <template>
     <span class="fs-4">
-        Betsellübersicht
+        Bestellübersicht
     </span>
     <hr>
     <table class="table table-dark table-hover">
