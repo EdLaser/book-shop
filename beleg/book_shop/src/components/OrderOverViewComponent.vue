@@ -12,8 +12,8 @@
                 <th scope="col">Preis</th>
             </tr>
         </thead>
-        <tbody v-if="orderItems > 0">
-            <tr v-for="(orderItem, index) in order">
+        <tbody v-if="store.order.length > 0">
+            <tr v-for="(orderItem, index) in store.order">
                 <td>
                     {{ index + 1 }}
                 </td>
@@ -21,7 +21,7 @@
                     {{ orderItem.title }}
                 </td>
                 <td>
-                    <input class="form-control" type="number" v-model="orderItem.count" @change="sumPrice()">
+                    <input class="form-control" type="number" v-model="orderItem.count" @change="this.sumPrice">
                 </td>
                 <td>
                     {{ orderItem.price }} €
@@ -41,7 +41,7 @@
     </table>
     <div class="row">
         <div class="col"><span>Anzahl Bücher: {{ this.bookAmount }}</span></div>
-        <div class="col"><span>Preis: {{ this.price }} €</span></div>
+        <div class="col"><span>Preis: {{ this.sumPrice }} €</span></div>
     </div>
     <hr>
     <form action="/checkout">
@@ -55,43 +55,40 @@ import { store } from './store';
 export default {
     data() {
         return {
-            price: ""
+            price: "",
+            store
         }
     },
     computed: {
-        order() {
-            return store.order;
-        },
         orderItems() {
             return store.order.length
         },
         bookAmount() {
-            return store.bookAmount;
-        }
-    },
-    methods: {
-        showOrder() {
-            return store.order;
+            let amount = 0;
+            for (let book of store.order) {
+                amount += book.count;
+            }
+            return amount
         },
         sumPrice() {
             let price = 0;
-            for (let item of this.order) {
+            for (let item of store.order) {
                 item.count < 1 ? store.order = this.removeByTitle(item.title) : null;
                 price += item.price * item.count;
             }
-            this.price = price.toFixed(2)
-        },
+            return price.toFixed(2)
+        }
+    },
+    methods: {
         removeByTitle(title) {
-            console.log(title)
-            console.log(store.order)
             store.order = store.order.filter(item => item.title !== title)
+            console.log(store)
         }
     },
     watch: {
-        bookAmount() {
+        store() {
             this.sumPrice();
-        },
-        order() { }
+        }
     }
 }
 </script>
