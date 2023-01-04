@@ -44,9 +44,11 @@
         <div class="col"><span>Preis: {{ this.sumPrice }} €</span></div>
     </div>
     <hr>
-    <form action="/checkout">
-        <button type="submit" class="btn btn-success">Bestellung abschließen</button>
-    </form>
+    <template v-if="store.order.length > 0">
+        <form :action=this.checkOutString>
+            <button type="submit" class="btn btn-success">Bestellung abschließen</button>
+        </form>
+    </template>
     <hr>
 </template>
 <script>
@@ -60,6 +62,15 @@ export default {
         }
     },
     computed: {
+        checkOutString() {
+            // ?
+            const whiteAsReg = /\s/g
+            const base = "create-checkout.php";
+            // for(let elem of store.order) {
+
+            // }
+            return `${base}?${store.order[0].title}=${store.order[0].count}`.replace(whiteAsReg, "%20")
+        },
         orderItems() {
             return store.order.length
         },
