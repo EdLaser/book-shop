@@ -60,7 +60,8 @@ export default {
     data() {
         return {
             books: data,
-            search: ""
+            search: "",
+            store
         }
     },
     methods: {
