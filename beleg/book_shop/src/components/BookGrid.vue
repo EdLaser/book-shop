@@ -23,18 +23,19 @@ import { store } from './store';
                 <thead>
                     <tr>
                         <th scope="col">Produktname</th>
-                        <th scope="col">Anzahl</th>
+                        <th scope="col">Lagerbestand</th>
+                        <th scope="col">Preis</th>
                     </tr>
                 </thead>
                 <tbody>
                     <template v-for="book in filteredBooks">
                         <BookItem>
                             <template v-slot:bookName>{{ book.Produkttitel }}</template>
-                            <template v-slot:amount>{{ book.Lagerbestand }}</template>
+                            <template v-slot:stock>{{ book.Lagerbestand }}</template>
+                        <template v-slot:price>{{ book.PreisNetto }}</template>
                             <template v-slot:buttons>
                                 <div class="btn-group">
                                     <button @click="addToOrder(book)" class="btn btn-success">Bestellen</button>
-                                    <button @click="decrease(book)" class="btn btn-danger">-</button>
                                 </div>
                             </template>
                             <template v-slot:warning v-if="book.Lagerbestand === 0">Sold out!</template>
@@ -53,7 +54,7 @@ import { store } from './store';
 //     console.log(xmlhttp.responseText);
 // });
 // xmlhttp.send();
-import data from '../../books.json'
+import data from '../assets/books.json'
 
 export default {
     data() {
@@ -72,14 +73,6 @@ export default {
                 store.order.push({ "title": book.Produkttitel, "count": 1, "price": parseFloat(book.PreisNetto) });
                 store.bookAmount += 1
             }
-        },
-        decrease(book) {
-            let item = store.order.find(item => item.title === book.Produkttitel);
-            item.count > 1 ? item.count-- : store.order = this.removeByTitle(store.order, book.Produkttitel);
-            store.bookAmount--;
-        },
-        removeByTitle(list, title) {
-            return list.filter(item => item.title !== title)
         }
     },
     computed: {
