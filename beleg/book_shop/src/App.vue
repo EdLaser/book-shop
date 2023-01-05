@@ -1,5 +1,7 @@
 <script>
 import { RouterLink, RouterView } from 'vue-router'
+import BookShopView from './views/BookShopView.vue';
+
 </script>
 
 <template>
@@ -10,5 +12,5 @@ import { RouterLink, RouterView } from 'vue-router'
             </li>
         </ul>
     </header>
-    <RouterView />
+    <BookShopView />
 </template>
