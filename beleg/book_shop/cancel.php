@@ -26,13 +26,14 @@
                 <div class="d-flex flex-column">
                     <h1>Bezahlung abgebrochen</h1>
                     <hr>
+                    <p>Auf ihren Wunsch wurde die Bezahlung abgebrochen, bin zum nächsten mal.</p>
                     <p>
                         <?php
-                        echo "Auf ihren Wunsch wurde die Bezahlung abgebrochen, bin zum nächsten mal. Für Rückfragen, hier ihre Stripe-SessionID: " . $_GET['session_id'];
+                        echo "Für Rückfragen, hier ihre Stripe-SessionID: " . $_GET['session_id'];
                         ?>
                     </p>
                     <hr>
-                    <a href="/">Zurück zum Shop</a>
+                    <a href="ewa/g04/beleg" class="link-success">Zurück zum Shop</a>
                 </div>
             </div>
         </div>
