@@ -48,7 +48,7 @@
         <button type="button" class="btn btn-success" @click="this.doCheckout()">Bestellung abschließen</button>
     </template>
     <hr>
-    <div id="test"></div>
+    <div>{{sessionID}}</div>
 </template>
 <script>
 import { store } from './store';
@@ -58,6 +58,7 @@ export default {
         return {
             price: "",
             store,
+            sessionID: ""
         }
     },
     computed: {
@@ -92,9 +93,13 @@ export default {
         },
         async doCheckout() {
             var stripe = Stripe('pk_test_51MJx9SKHP5yCVcwpXnsPxNDUzEwIRyrd9h4NKwOXEbsKPG9mho3yI40mAT8A9e4h0AtB6u4RY9EnhfUBBCyY3CZ300Uy1xtSF8');
-            fetch('/helpers/create-checkout.php').then(response => response.text()).then(data => document.getElementById('test').innerHTML = data)
+        
+            fetch('/helpers/create-checkout.php').then(response => response.text()).then(data => {
+                this.sessionID = data;
+            })
+
             stripe.redirectToCheckout({
-                sessionId: this.session_id
+                sessionId: this.sessionID
             }).then(function (result) { })
         }
     }
