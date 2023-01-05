@@ -32,7 +32,7 @@ import { store } from './store';
                         <BookItem>
                             <template v-slot:bookName>{{ book.Produkttitel }}</template>
                             <template v-slot:stock>{{ book.Lagerbestand }}</template>
-                        <template v-slot:price>{{ book.PreisNetto }}</template>
+                            <template v-slot:price>{{ book.PreisNetto }}</template>
                             <template v-slot:buttons>
                                 <div class="btn-group">
                                     <button @click="addToOrder(book)" class="btn btn-success">Bestellen</button>
@@ -55,6 +55,7 @@ import { store } from './store';
 // });
 // xmlhttp.send();
 import data from '../assets/books.json'
+import axios from 'axios';
 
 export default {
     data() {
@@ -74,6 +75,9 @@ export default {
                 store.order.push({ "title": book.Produkttitel, "count": 1, "price": parseFloat(book.PreisNetto) });
                 store.bookAmount += 1
             }
+        },
+        fetchBooks() {
+            axios.get('http://ivm108.informatik.htw-dresden.de/ewa/g04/fetch_books.php').then(response => (this.books = response));
         }
     },
     computed: {
@@ -82,6 +86,9 @@ export default {
                 return book.Produkttitel.toLowerCase().indexOf(this.search.toLowerCase()) != -1;
             })
         }
+    },
+    mounted() {
+        this.fetchBooks();
     }
 }
 </script>
