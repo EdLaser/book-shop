@@ -45,11 +45,10 @@
     </div>
     <hr>
     <template v-if="store.order.length > 0">
-        <form :action=this.checkOutString>
-            <button type="submit" class="btn btn-success">Bestellung abschließen</button>
-        </form>
+        <button type="button" class="btn btn-success" @click="this.doCheckout()">Bestellung abschließen</button>
     </template>
     <hr>
+    <div id="test"></div>
 </template>
 <script>
 import { store } from './store';
@@ -58,7 +57,7 @@ export default {
     data() {
         return {
             price: "",
-            store
+            store,
         }
     },
     computed: {
@@ -77,7 +76,7 @@ export default {
         },
         sumPrice() {
             let price = 0;
-            if(store.order.length > 0) {
+            if (store.order.length > 0) {
                 for (let item of store.order) {
                     item.count < 1 ? store.order = this.removeByTitle(item.title) : store.order;
                     price += item.price * item.count;
@@ -90,6 +89,13 @@ export default {
         removeByTitle(title) {
             store.order = store.order.filter(item => item.title !== title)
             console.log(store)
+        },
+        async doCheckout() {
+            var stripe = Stripe('pk_test_51MJx9SKHP5yCVcwpXnsPxNDUzEwIRyrd9h4NKwOXEbsKPG9mho3yI40mAT8A9e4h0AtB6u4RY9EnhfUBBCyY3CZ300Uy1xtSF8');
+            fetch('/helpers/create-checkout.php').then(response => response.text()).then(data => document.getElementById('test').innerHTML = data)
+            stripe.redirectToCheckout({
+                sessionId: this.session_id
+            }).then(function (result) { })
         }
     }
 }
