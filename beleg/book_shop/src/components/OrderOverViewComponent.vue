@@ -21,7 +21,7 @@
                     {{ orderItem.title }}
                 </td>
                 <td>
-                    <input class="form-control" type="number" v-model="orderItem.count" @change="this.sumPrice">
+                    <input class="form-control" type="number" v-model="orderItem.count">
                 </td>
                 <td>
                     {{ orderItem.price }} €
@@ -66,13 +66,7 @@ export default {
             // ?
             const whiteAsReg = /\s/g
             const base = "create-checkout.php";
-            // for(let elem of store.order) {
-
-            // }
             return `${base}?${store.order[0].title}=${store.order[0].count}`.replace(whiteAsReg, "%20")
-        },
-        orderItems() {
-            return store.order.length
         },
         bookAmount() {
             let amount = 0;
@@ -83,22 +77,19 @@ export default {
         },
         sumPrice() {
             let price = 0;
-            for (let item of store.order) {
-                item.count < 1 ? store.order = this.removeByTitle(item.title) : null;
-                price += item.price * item.count;
+            if(store.order.length > 0) {
+                for (let item of store.order) {
+                    item.count < 1 ? store.order = this.removeByTitle(item.title) : store.order;
+                    price += item.price * item.count;
+                }
+                return price.toFixed(2)
             }
-            return price.toFixed(2)
         }
     },
     methods: {
         removeByTitle(title) {
             store.order = store.order.filter(item => item.title !== title)
             console.log(store)
-        }
-    },
-    watch: {
-        store() {
-            this.sumPrice();
         }
     }
 }
