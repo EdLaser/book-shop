@@ -74,7 +74,6 @@ export default {
             await fetch('./helpers/fetch-books.php')
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
                 this.books = data;
             })
 

@@ -89,8 +89,6 @@ export default {
             }
         },
         orderLength() {
-            console.log(store.order)
-            console.log(typeof store.order)
             let length = 0;
             typeof store.order === "undefined" ? length = 0 : length = store.order.length
             return length
@@ -115,7 +113,6 @@ export default {
             if (typeof store.order === 'undefined') {
                 store.order = new Array(0)
             } else {
-                console.log(store)
                 return store.order.filter(item => item.title !== title)
             }
         },
@@ -134,7 +131,6 @@ export default {
             }).catch((error) => {
                 console.error(error)
             }).then(response => response.text()).then(data => {
-                console.log(data)
                 stripe.redirectToCheckout({
                     sessionId: data
                 }).then(function (result) { })
