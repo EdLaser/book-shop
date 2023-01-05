@@ -121,9 +121,20 @@ export default {
         },
         doCheckout() {
             var stripe = Stripe('pk_test_51MJx9SKHP5yCVcwpXnsPxNDUzEwIRyrd9h4NKwOXEbsKPG9mho3yI40mAT8A9e4h0AtB6u4RY9EnhfUBBCyY3CZ300Uy1xtSF8');
-
-            fetch('/helpers/create-checkout.php').then(response => response.text()).then(data => {
-                console.log(this.sessionID)
+            let booksInOrder = []
+            for (let book of store.order) {
+                booksInOrder.push({ 'title': book.title, 'amount': book.count })
+            }
+            fetch('/helpers/create-checkout.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(booksInOrder)
+            }).catch((error) => {
+                console.error(error)
+            }).then(response => response.text()).then(data => {
+                console.log(data)
                 stripe.redirectToCheckout({
                     sessionId: data
                 }).then(function (result) { })
