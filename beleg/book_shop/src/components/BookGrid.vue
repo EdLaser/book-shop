@@ -48,19 +48,13 @@ import { store } from './store';
 </template>
 
 <script>
-// let xmlhttp = new XMLHttpRequest();
-// xmlhttp.open("GET", "../../fetch_books.php");
-// xmlhttp.addEventListener('load', function() {
-//     console.log(xmlhttp.responseText);
-// });
-// xmlhttp.send();
-import data from '../assets/books.json'
-import axios from 'axios';
+// import data from '../assets/books.json'
+// import axios from 'axios';
 
 export default {
     data() {
         return {
-            books: data,
+            books: [],
             search: "",
             store
         }
@@ -70,14 +64,20 @@ export default {
             let item = store.order.find(item => item.title === book.Produkttitel);
             if (item) {
                 item.count += 1;
-                store.bookAmount += 1
+                store.bookAmount += item.count
             } else {
                 store.order.push({ "title": book.Produkttitel, "count": 1, "price": parseFloat(book.PreisNetto) });
                 store.bookAmount += 1
             }
         },
-        fetchBooks() {
-            axios.get('http://ivm108.informatik.htw-dresden.de/ewa/g04/fetch_books.php').then(response => (this.books = response));
+        async fetchBooks() {
+            await fetch('./helpers/fetch-books.php')
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                this.books = data;
+            })
+
         }
     },
     computed: {
