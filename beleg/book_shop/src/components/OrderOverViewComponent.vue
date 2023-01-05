@@ -125,7 +125,7 @@ export default {
             for (let book of store.order) {
                 booksInOrder.push({ 'title': book.title, 'amount': book.count })
             }
-            fetch('/helpers/create-checkout.php', {
+            fetch('./helpers/create-checkout.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
