@@ -1,34 +1,80 @@
 <script>
-import axios from 'axios';
+import { store } from './store';
 
 export default {
     data() {
         return {
-            domain: "http://localhost:5173"
+            domain: "http://localhost:5173",
+            store
         }
     },
-    methods: {
-        async doCheckout() {
-            const stripe = require('stripe')('sk_test_51MJx9SKHP5yCVcwp7iFbuCxnTb8cuyDxV7fCEeOC1eEb4ApA4D68ARdxevWIps2jKhtQ0lDpk38D8ZMWMnUbQDyc00zfn8DSjt');
-            const session = await stripe.checkout.sessions.create({
-                line_items: [
-                    {
-                        // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-                        price: '{{PRICE_ID}}',
-                        quantity: 1,
-                    },
-                ],
-                mode: 'payment',
-                success_url: `${this.domain}/success.html`,
-                cancel_url: `${this.domain}/cancel.html`,
-            });
-            console.log(session);
+    computed: {
+        bookAmount() {
+            let amount = 0;
+            for (let book of store.order) {
+                amount += book.count;
+            }
+            return amount
+        },
+        sumPrice() {
+            let price = 0;
+            for (let item of store.order) {
+                item.count < 1 ? store.order = this.removeByTitle(item.title) : null;
+                price += item.price * item.count;
+            }
+            return price.toFixed(2)
         }
     }
 }
 // res.redirect(303, session.url);
 </script>
 <template>
-    <div>Wir testen das Checkout</div>
-    <button type="button" @click="this.doCheckout()">Test Checkout</button>
+    <main class="bg-dark vh-100">
+        <div class="container">
+            <div class="d-flex flex-row">
+                <span class="fs-4">
+                    Bestellübersicht
+                </span>
+                <hr>
+                <table class="table table-dark table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Titel</th>
+                            <th scope="col">Anzahl</th>
+                            <th scope="col">Preis</th>
+                        </tr>
+                    </thead>
+                    <tbody v-if="store.order.length > 0">
+                        <tr v-for="(orderItem, index) in store.order">
+                            <td>
+                                {{ index + 1 }}
+                            </td>
+                            <td>
+                                {{ orderItem.title }}
+                            </td>
+                            <td>
+                                {{ orderItem.count }}
+                            </td>
+                            <td>
+                                {{ orderItem.price }} €
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="row">
+                    <div class="col"><span>Anzahl Bücher: {{ this.bookAmount }}</span></div>
+                    <div class="col"><span>Preis: {{ this.sumPrice }} €</span></div>
+                </div>
+                <hr>
+            </div>
+            <div class="d-flex flex-row">
+                <div>Wir testen das Checkout</div>
+                <form action="">
+                    <button type="button" class="btn btn-success" @click="console.log(store.order)">Test
+                        Checkout</button>
+                </form>
+            </div>
+        </div>
+    </main>
 </template>
