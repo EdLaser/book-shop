@@ -2,7 +2,7 @@
 
 
 $BOOK_MAPPING = [
-    'Das Schweigen der Manus' => 'price_1MMrhSKHP5yCVcwphIzLFZHt', 
+    'Das Schweigen der Manus' => 'price_1MN0eIKHP5yCVcwpTJNwpFHF', 
     'PHP für Dumme' => 'price_1MMuIlKHP5yCVcwpTr3uP2qV', 
     'Docker ist auch nur ein Wal' => 'price_1MMuJJKHP5yCVcwpYEDJQ0DR'
 ];
