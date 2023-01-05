@@ -27,7 +27,7 @@
                     </td>
                     <td>
                         <div class="btn-group-vertical btn-group-sm" role="group">
-                            <button @click="addToOrder(orderItem.title)" class="btn btn-success">^</button>
+                            <button @click="addToOrder(orderItem.title)" class="btn btn-success">+</button>
                             <button @click="decrease(orderItem.title)" type="button" class="btn btn-danger">-</button>
                         </div>
                     </td>
