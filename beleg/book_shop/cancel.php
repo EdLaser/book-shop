@@ -33,7 +33,7 @@
                         ?>
                     </p>
                     <hr>
-                    <a href="ewa/g04/beleg" class="link-success">Zurück zum Shop</a>
+                    <a href="/ewa/g04/beleg" class="link-success">Zurück zum Shop</a>
                 </div>
             </div>
         </div>
