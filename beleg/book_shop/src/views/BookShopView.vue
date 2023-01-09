@@ -15,7 +15,7 @@ export default {
 </script>
 
 <template>
-    <main class="bg-dark vh-100">
+    <main class="bg-dark w-100">
         <div class="container bg-dark">
             <div class="d-flex flex-row">
                 <div class="d-flex flex-row">
