@@ -16,7 +16,7 @@ export default {
 
 <template>
     <main class="bg-dark vh-100">
-        <div class="container">
+        <div class="container bg-dark">
             <div class="d-flex flex-row">
                 <div class="d-flex flex-row">
                     <div class="d-flex flex-column text-bg-dark">
