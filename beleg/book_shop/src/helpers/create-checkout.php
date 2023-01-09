@@ -1,10 +1,10 @@
 <?php
-
-
 $BOOK_MAPPING = [
     'Das Schweigen der Manus' => 'price_1MN0eIKHP5yCVcwpTJNwpFHF', 
     'PHP für Dumme' => 'price_1MMuIlKHP5yCVcwpTr3uP2qV', 
-    'Docker ist auch nur ein Wal' => 'price_1MMuJJKHP5yCVcwpYEDJQ0DR'
+    'Docker ist auch nur ein Wal' => 'price_1MMuJJKHP5yCVcwpYEDJQ0DR',
+    'Nein, Java ist keine Insel!' => 'price_1MOIn0KHP5yCVcwpSUssXWlX',
+    'Weniger ist mehr - Ruby' => 'price_1MOIoLKHP5yCVcwpqRHWFJId'
 ];
 
 require '../helpers/stripe-php-10.3.0/init.php';
@@ -33,4 +33,3 @@ $checkout_session = \Stripe\Checkout\Session::create([
 ]);
 $checkout_session_id = $checkout_session->id;
 echo $checkout_session_id;
-?>
