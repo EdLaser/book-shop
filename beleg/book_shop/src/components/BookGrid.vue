@@ -22,8 +22,8 @@ import { store } from './store';
             <template v-for="book in filteredBooks">
                 <div class="col">
                     <BookItem>
-                        <template v-slot:image><img :src="book.LinkGrafikdatei" class="card-img-top"
-                                :alt="book.Produkttitel + ' Cover'"></template>
+                        <template v-slot:image><img style="width: 200px; height: 200px;" :src="book.LinkGrafikdatei"
+                                class="card-img-top" :alt="book.Produkttitel + ' Cover'"></template>
                         <template v-slot:bookName>{{ book.Produkttitel }}</template>
                         <template v-slot:stock>{{ book.Lagerbestand }}</template>
                         <template v-slot:price>{{ book.PreisNetto }}</template>
