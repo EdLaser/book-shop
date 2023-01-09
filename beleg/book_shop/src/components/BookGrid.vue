@@ -18,31 +18,23 @@ import { store } from './store';
         </div>
     </div>
     <div class="d-flex flex-row">
-        <div class="d-flex flex-column">
-            <table class="table table-dark table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">Produktname</th>
-                        <th scope="col">Lagerbestand</th>
-                        <th scope="col">Preis</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <template v-for="book in filteredBooks">
-                        <BookItem>
-                            <template v-slot:bookName>{{ book.Produkttitel }}</template>
-                            <template v-slot:stock>{{ book.Lagerbestand }}</template>
-                            <template v-slot:price>{{ book.PreisNetto }}</template>
-                            <template v-slot:buttons>
-                                <div class="btn-group">
-                                    <button @click="addToOrder(book)" class="btn btn-success">Bestellen</button>
-                                </div>
-                            </template>
-                            <template v-slot:warning v-if="book.Lagerbestand === 0">Sold out!</template>
-                        </BookItem>
-                    </template>
-                </tbody>
-            </table>
+        <div class="row row-cols-2 bg-dark">
+            <template v-for="book in filteredBooks">
+                <div class="col">
+                    <BookItem>
+                        <template v-slot:image><img :src="book.LinkGrafikdatei" class="card-img-top"
+                                :alt="book.Produkttitel + ' Cover'"></template>
+                        <template v-slot:bookName>{{ book.Produkttitel }}</template>
+                        <template v-slot:stock>{{ book.Lagerbestand }}</template>
+                        <template v-slot:price>{{ book.PreisNetto }}</template>
+                        <template v-slot:description>{{ book.Kurzinhalt }}</template>
+                        <template v-slot:button>
+                            <button @click="addToOrder(book)" class="btn btn-success">Bestellen</button>
+                        </template>
+                        <template v-slot:warning v-if="book.Lagerbestand === 0">Sold out!</template>
+                    </BookItem>
+                </div>
+            </template>
         </div>
     </div>
 </template>
@@ -72,10 +64,10 @@ export default {
         },
         async fetchBooks() {
             await fetch('./helpers/fetch-books.php')
-            .then((response) => response.json())
-            .then((data) => {
-                this.books = data;
-            })
+                .then((response) => response.json())
+                .then((data) => {
+                    this.books = data;
+                })
 
         }
     },

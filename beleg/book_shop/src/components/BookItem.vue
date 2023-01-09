@@ -1,19 +1,25 @@
 <template>
-    <tr>
-        <td>
-            <slot name="bookName"></slot>
-        </td>
-        <td>
-            <slot name="stock"></slot>
-        </td>
-        <td>
-            <slot name="price"></slot>
-        </td>
-        <td>
-            <slot name="buttons">
-
-            </slot>
-        </td>
-        <td class="text-danger"><slot name="warning"></slot></td>
-    </tr>
+    <div class="card" style="width: 18rem;">
+        <slot name="image"></slot>
+        <div class="card-body">
+            <h5 class="card-title">
+                <slot name="bookName"></slot>
+            </h5>
+            <p>
+                <slot name="description"></slot>
+            </p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                <slot name="price"></slot>
+            </li>
+            <li class="list-group-item">
+                <slot name="stock"></slot>
+            </li>
+        </ul>
+        <div class="card-body">
+            <slot name="button"></slot>
+            <slot name="warning"></slot>
+        </div>
+    </div>
 </template>
