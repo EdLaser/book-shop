@@ -4,7 +4,8 @@ $BOOK_MAPPING = [
     'PHP für Dumme' => 'price_1MMuIlKHP5yCVcwpTr3uP2qV', 
     'Docker ist auch nur ein Wal' => 'price_1MMuJJKHP5yCVcwpYEDJQ0DR',
     'Nein, Java ist keine Insel!' => 'price_1MOIn0KHP5yCVcwpSUssXWlX',
-    'Weniger ist mehr - Ruby' => 'price_1MOIoLKHP5yCVcwpqRHWFJId'
+    'Weniger ist mehr - Ruby' => 'price_1MOIoLKHP5yCVcwpqRHWFJId',
+    'Python - Schlange in der Hand oder auf dem Dach ?' => 'price_1MOJNGKHP5yCVcwpc5Y21Nnz'
 ];
 
 require '../helpers/stripe-php-10.3.0/init.php';
