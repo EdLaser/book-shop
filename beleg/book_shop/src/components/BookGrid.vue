@@ -8,7 +8,7 @@ import { store } from './store';
     <div class="d-flex flex-row">
         <div class="d-flex flex-column">
             <form role="search" method="">
-                <div class="row">
+                <div class="row mb-2">
                     <div class="col">
                         <input class="form-control me-2" type="search" placeholder="Suche..." aria-label="Suche"
                             v-model="search">
@@ -20,10 +20,10 @@ import { store } from './store';
     <div class="d-flex flex-row">
         <div class="row row-cols-2 bg-dark">
             <template v-for="book in filteredBooks">
-                <div class="col">
+                <div class="col my-3">
                     <BookItem>
                         <template v-slot:image><img style="width: 200px; height: 200px;" :src="book.LinkGrafikdatei"
-                                class="card-img-top" :alt="book.Produkttitel + ' Cover'"></template>
+                                class="card-img-top img-thumbnail" :alt="book.Produkttitel + ' Cover'"></template>
                         <template v-slot:bookName>{{ book.Produkttitel }}</template>
                         <template v-slot:stock>{{ book.Lagerbestand }}</template>
                         <template v-slot:price>{{ book.PreisNetto }}</template>

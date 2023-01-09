@@ -11,10 +11,10 @@
         </div>
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
-                <slot name="price"></slot>
+                Preis: <slot name="price"></slot>€
             </li>
             <li class="list-group-item">
-                <slot name="stock"></slot>
+                Lagerbestand: <slot name="stock"></slot>
             </li>
         </ul>
         <div class="card-body">
