@@ -108,12 +108,15 @@ export default {
         },
         addToOrder(title) {
             let item = store.order.find(item => item.title === title);
+            let index = store.books.findIndex(item => item.Produkttitel === title)
             if (item) {
                 item.count += 1;
                 store.bookAmount += 1
+                store.books[index].Lagerbestand--;
             } else {
                 store.order.push({ "title": book.Produkttitel, "count": 1, "price": parseFloat(book.PreisNetto) });
                 store.bookAmount += 1
+                store.books[index].Lagerbestand--;
             }
         },
         removeFromOrder(title) {
