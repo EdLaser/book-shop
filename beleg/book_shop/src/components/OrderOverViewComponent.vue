@@ -35,9 +35,9 @@
                         {{ orderItem.price }} €
                     </td>
                     <td>
-                        <button type="button" class="btn btn-secondary"
-                            @click="removeFromOrder(orderItem.title)"><svg xmlns="http://www.w3.org/2000/svg"
-                                width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                        <button type="button" class="btn btn-secondary" @click="removeFromOrder(orderItem.title)"><svg
+                                xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-trash" viewBox="0 0 16 16">
                                 <path
                                     d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
                                 <path fill-rule="evenodd"
@@ -96,6 +96,13 @@ export default {
     },
     methods: {
         decrease(title) {
+            let index = store.books.findIndex(item => item.Produkttitel === title)
+            console.log(index)
+            if (index !== -1) {
+                console.log(store.books[index].Lagerbestand)
+                store.books[index].Lagerbestand++;
+            }
+
             let item = store.order.find(item => item.title === title);
             item.count > 1 ? item.count-- : store.order = this.removeByTitle(title);
         },

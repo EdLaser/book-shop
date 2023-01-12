@@ -22,8 +22,8 @@ import { store } from './store';
             <template v-for="book in filteredBooks">
                 <div class="col my-3">
                     <BookItem>
-                        <template v-slot:image><img :src="book.LinkGrafikdatei"
-                                class="card-img-top img-fluid" :alt="book.Produkttitel + ' Cover'"></template>
+                        <template v-slot:image><img :src="book.LinkGrafikdatei" style="width: 50%; height: 50%;" class="card-img-top"
+                                :alt="book.Produkttitel + ' Cover'"></template>
                         <template v-slot:bookName>{{ book.Produkttitel }}</template>
                         <template v-slot:stock>{{ book.Lagerbestand }}</template>
                         <template v-slot:price>{{ book.PreisNetto }}</template>
@@ -31,7 +31,7 @@ import { store } from './store';
                         <template v-slot:button>
                             <button @click="addToOrder(book)" class="btn btn-success">Bestellen</button>
                         </template>
-                        <template v-slot:warning v-if="book.Lagerbestand === 0">Sold out!</template>
+                        <template v-slot:warning v-if="book.Lagerbestand === 0"><p class="text-danger">Ausverkauft!</p></template>
                     </BookItem>
                 </div>
             </template>
@@ -40,9 +40,6 @@ import { store } from './store';
 </template>
 
 <script>
-// import data from '../assets/books.json'
-// import axios from 'axios';
-
 export default {
     data() {
         return {
@@ -53,13 +50,17 @@ export default {
     },
     methods: {
         addToOrder(book) {
-            let item = store.order.find(item => item.title === book.Produkttitel);
-            if (item) {
-                item.count += 1;
-                store.bookAmount += item.count
-            } else {
-                store.order.push({ "title": book.Produkttitel, "count": 1, "price": parseFloat(book.PreisNetto) });
-                store.bookAmount += 1
+            if (book.Lagerbestand > 0) {
+                let item = store.order.find(item => item.title === book.Produkttitel);
+                if (item) {
+                    item.count += 1;
+                    store.bookAmount += item.count
+                    book.Lagerbestand--
+                } else {
+                    store.order.push({ "title": book.Produkttitel, "count": 1, "price": parseFloat(book.PreisNetto) });
+                    store.bookAmount += 1
+                    book.Lagerbestand--
+                }
             }
         },
         async fetchBooks() {
@@ -67,13 +68,14 @@ export default {
                 .then((response) => response.json())
                 .then((data) => {
                     this.books = data;
+                    store.books = data
                 })
 
         }
     },
     computed: {
         filteredBooks() {
-            return this.books.filter(book => {
+            return store.books.filter(book => {
                 return book.Produkttitel.toLowerCase().indexOf(this.search.toLowerCase()) != -1;
             })
         }
