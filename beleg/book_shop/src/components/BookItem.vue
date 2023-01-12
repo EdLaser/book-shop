@@ -1,5 +1,5 @@
 <template>
-    <div class="card" style="width: 23rem;">
+    <div class="card w-75">
         <slot name="image"></slot>
         <div class="card-body">
             <h5 class="card-title">
