@@ -1,5 +1,5 @@
 <template>
-    <span class="fs-4">
+    <span class="fs-4 text-white">
         Bestellübersicht
     </span>
     <hr>
@@ -50,8 +50,8 @@
         </template>
     </table>
     <div class="row">
-        <div class="col"><span>Anzahl Bücher: {{ this.bookAmount }}</span></div>
-        <div class="col"><span>Preis: {{ this.sumPrice }} €</span></div>
+        <div class="col"><span class="text-white">Anzahl Bücher: {{ this.bookAmount }}</span></div>
+        <div class="col"><span class="text-white">Preis: {{ this.sumPrice }} €</span></div>
     </div>
     <hr>
     <template v-if="orderLength > 0">
