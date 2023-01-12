@@ -13,7 +13,26 @@ export default {
     }
 }
 </script>
-
+<style>
+.sidenav {
+    height: 100%;
+    /* Full-height: remove this if you want "auto" height */
+    width: 400px;
+    /* Set the width of the sidebar */
+    position: fixed;
+    /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1;
+    /* Stay on top */
+    top: 0;
+    /* Stay at the top */
+    right: 0;
+    background-color: #212529;
+    /* Black */
+    overflow-x: hidden;
+    /* Disable horizontal scroll */
+    padding-top: 60px;
+}
+</style>
 <template>
     <main class="bg-dark w-100">
         <div class="container bg-dark">
@@ -27,11 +46,11 @@ export default {
                     </div>
                 </div>
             </div>
-            <div class="d-flex flex-row justify-content-between">
+            <div class="d-flex flex-row justify-content-between w-75">
                 <div class="d-flex flex-column">
                     <BookShop />
                 </div>
-                <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark fixed-right" style="width: 40%">
+                <div class="sidenav">
                     <OrderOverViewComponent />
                 </div>
             </div>
