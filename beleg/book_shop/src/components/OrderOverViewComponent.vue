@@ -120,6 +120,8 @@ export default {
             }
         },
         removeFromOrder(title) {
+            let index = store.books.findIndex(item => item.Produkttitel === title)
+            store.books[index].Lagerbestand += store.order.find(item => item.title === title).count
             store.order = this.removeByTitle(title);
         },
         removeByTitle(title) {
